@@ -28,6 +28,8 @@ Retesting the refined emergency prompt returned Health/High with three medical-s
 
 ## What these checks establish
 
+Deployment revision `a360bbc` was pushed and its new homepage wording was observed on Vercel with HTTP 200. Subsequent deployed generation requests returned the recoverable 502 error and remote browser page loads timed out; a later local Gemini connectivity probe also failed. Consequently, the domain-aware revision's live end-to-end generation remains unverified. Safe server diagnostics were added to help distinguish a provider/connection error from schema or JSON rejection without logging problem text, AI content or credentials.
+
 Domain-field rejection/preservation tests and browser perspective checks protect the data/UI contract. Real-model examples assess the content, which fixture-based tests cannot establish. A finite set of successful examples cannot guarantee future classification, advice quality or prompt-injection resistance. Runtime validation ensures structure and counts; it does not validate diagnoses, urgency calibration or feasibility. Health output remains general information and care-seeking guidance, not diagnosis or treatment.
 
 Repeat these scenarios when changing the prompt/model. Inspect causes, all three actions, every day and success checks; a correct label alone is insufficient. Prioritize immediate help for urgent situations, respect stated constraints and reject invented facts.

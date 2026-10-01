@@ -64,6 +64,8 @@ Activity mode: Focused investigation for an experienced plan-first learner.
 
 ## Revisions
 
+- Domain revision committed/pushed as `a360bbc`; the live homepage returned 200 with the new wording. Deployed generation checks returned the recoverable 502 message, while two remote browser page loads timed out. A subsequent local provider probe also failed with APIConnectionError. Live end-to-end success of the revision is not established. Added credential-free server diagnostics (`kind`, numeric provider status and invalid schema field names only) to distinguish provider/connection failures from invalid output; no user input, response content or key is logged. Learner assistance with Vercel logs is requested.
+
 - Final domain-aware production build, typecheck and lint passed, alongside the 21 automated tests. Five browser checks passed on the production app. Publishing the revision and checking its real deployed browser response are the remaining agent steps; learner retry follows.
 
 - Domain revision verification: 21 unit/render/API tests and five browser workflow tests passed. Real fictional examples produced all nine supported domain categories with relevant actions; a conflicting marketing instruction remained an Education plan. Timeout/connection interruptions were retained as failures and explicitly retested. The urgent shop-owner example was Health/High; after refining a distracting shop task, retesting produced only medical/safety actions, immediate help, and clinician-guided follow-up. See `domain-verification.md` for evidence and limitations. Final production build, publishing verification and learner retry are tracked separately until complete.
