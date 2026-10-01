@@ -13,7 +13,7 @@ status: in-progress
 - Project management: https://devpost.com/submit-to/30447-build-with-ai-basics/manage/submissions
 - Official rules: https://learn-ai-basics.devpost.com/rules
 - Offline technical reference: `devpost/app-map.html`
-- Demo video: not provided yet.
+- Demo video: https://www.youtube.com/watch?v=zXfd56B5dLA
 - Submitted project page: not provided yet.
 
 ## Technical readiness
@@ -32,10 +32,10 @@ The current official rules specify a video under three minutes, with working-app
 
 Before recording, open only the app and use a fictional problem. Hide credential files, keys, private notifications and unrelated windows. Record the real flow: describe the problem, Submit, wait for generation, then show the domain perspective, core problem, priority, three actions and Days 1–7 with progress checks. Keep the demonstrated plan consistent with what the app actually generated. The learner chooses the scenario and writes their own narration.
 
-- [ ] Scenario selected by learner.
-- [ ] Video recorded and checked for visible end-to-end behavior.
-- [ ] Video uploaded publicly to YouTube or Vimeo.
-- [ ] Video URL tested without authentication.
+- [ ] Confirm the recorded scenario and visible end-to-end behavior with the learner; agent has not watched the footage.
+- [x] Video recorded — learner confirmed and supplied its YouTube URL.
+- [x] Video uploaded to YouTube; unauthenticated metadata reports `isPrivate: false`.
+- [x] Video URL checked without authentication: oEmbed HTTP 200, player status `OK`, title AFRIQA, duration 78 seconds (1:18), below the three-minute limit. Playback/content not visually inspected.
 
 ## Learner-owned submission
 

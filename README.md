@@ -6,6 +6,8 @@ Live demo: https://afriqa-xi.vercel.app
 
 Public source: https://github.com/wasko1984/afriqa
 
+Demo video: https://www.youtube.com/watch?v=zXfd56B5dLA (1 minute 18 seconds)
+
 This learning proof of concept uses Next.js, TypeScript, Gemini structured generation, and runtime validation. All five result sections are required. It is an online app; there is no offline model, account system, or saved-plan history.
 
 AFRIQA identifies the main domain—Health, Security, Education, Business, Household, Relationships, Careers, Mixed or Other—and displays that perspective on the plan. Occupation does not override the concern: a shop owner describing urgent symptoms needs health guidance. Health output is general information and care-seeking guidance, not diagnosis or treatment. Immediate danger requires help now; the seven-day schedule is conditional follow-up.
