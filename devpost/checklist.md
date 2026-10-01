@@ -19,7 +19,7 @@ Build mode: fast
   Learner check: Open localhost:3000, enter a business problem, submit, and inspect whether the results fit the situation. Inspect the generation schema and a real response to see how structured output works.
   Commit: `Build real problem-to-plan workflow`
 
-- [ ] **2. Recover from errors and verify the complete journey**
+- [x] **2. Recover from errors and verify the complete journey**
   Becomes usable: Empty/oversized input, loading, failed generation, Retry, and results refresh all behave clearly; the workflow is usable on phone and desktop.
   Why now: Once real generation is proven, protect the complete journey against the failures most likely to interrupt the demo.
   PRD ref: `prd.md > Problem Submission`, `Generation Failure and Retry`, `States and Boundaries`, `Acceptance Criteria`
@@ -61,6 +61,10 @@ Reflection: Not yet offered; personal answer belongs only in the ignored learner
 Activity mode: Focused investigation for an experienced plan-first learner.
 
 ## Revisions
+
+- Vercel demo verified at `https://afriqa-xi.vercel.app`: homepage HTTP 200; real deployed generation returned all required sections, three actions and ordered Days 1–7. An unintercepted browser submission reached `/results`, showed the actions and Day 7, rejected blank input, and displayed return guidance after refresh. No credentials were transmitted in chat. Final learner exploration/readiness confirmation and learning wrap-up remain pending.
+
+- GitHub publishing succeeded to `https://github.com/wasko1984/afriqa`. GitHub's unauthenticated API confirmed the repository is public, with default branch `master`; the remote branch matches verified commit `dba6118`. Local credential files and the learner profile are untracked, and the configured Gemini key was absent from both published commit diffs. Vercel deployment and deployed real-AI verification remain pending.
 
 - Slice 2 verification: 18 unit/render/API tests passed, including malformed/oversized input, configuration and timeout mapping; four browser tests passed, including refreshing a generated result and Retry with the original submission. Typecheck, lint and production build passed. Real fictional scenarios exposed overestimated urgency and weak accounting advice; the prompt now grounds urgency, distinguishes sales from cash/profit, and discourages unsupported targets. Retesting returned schema-valid Medium/Low/High plans for unknown impact, stable planning and an imminent rent deadline. Semantic quality remains imperfect: occasional assumptions or inconsistent cash checks survive structural validation. One 502 could not be reproduced directly; no speculative adapter fix was made.
 - Publishing access check: no Git remote or GitHub/Vercel CLI is configured. The Computer Use runtime failed to initialize with a missing kernel-assets path. Account sign-in and repository details are required to finish publishing; no deployed URL exists yet.

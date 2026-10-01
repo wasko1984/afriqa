@@ -2,6 +2,10 @@
 
 Turn a small-business problem into three practical actions and a seven-day plan.
 
+Live demo: https://afriqa-xi.vercel.app
+
+Public source: https://github.com/wasko1984/afriqa
+
 This learning proof of concept uses Next.js, TypeScript, Gemini structured generation, and runtime validation. All five result sections are required. It is an online app; there is no offline model, account system, or saved-plan history.
 
 ## Local setup
@@ -30,6 +34,6 @@ The hackathon also requires a short demo video and public source repository. Dep
 
 ## Current status
 
-The local workflow is implemented and learner-tested. Eighteen unit/render/API tests, four browser workflow tests using test-only responses, typecheck, lint, and the production build passed. Desktop and phone layouts were inspected. Gemini Flash-Lite returned real schema-valid plans; the actual API returned 200 and a browser submission reached the real results page with all seven days. Public deployment and final review remain pending. See `devpost/checklist.md` for the actual build state.
+The local workflow is implemented and learner-tested. Eighteen unit/render/API tests, four browser workflow tests using test-only responses, typecheck, lint, and the production build passed. Desktop and phone layouts were inspected. The public Vercel demo was verified with real Gemini generation through its API and browser, including navigation to results, three actions, Day 7, blank-input rejection, and refresh guidance. Final learner review remains pending. See `devpost/checklist.md` for the actual build state.
 
 Real quality checks used fictional daily-sales, stable-stock-planning, and imminent-rent scenarios. The refined prompt produced Medium, Low, and High urgency respectively. Schema validation verifies structure, not the accuracy of advice: the model can still assume unavailable inventory or customer debts, or give an inconsistent accounting check. Review each plan against the stated situation. One real request failed with the recoverable generation message; repeating it directly succeeded, so its exact cause was not established.
