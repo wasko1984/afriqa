@@ -9,7 +9,7 @@ Build mode: fast
 
 ## Slices
 
-- [ ] **1. Enter a business problem and receive a real structured plan**
+- [x] **1. Enter a business problem and receive a real structured plan**
   Becomes usable: A running AFRIQA app with welcome/input, real Gemini generation, and a separate results page containing every required section.
   Why now: Proves free AI access and the distinctive problem-to-action workflow early; scaffolding is included in this working step.
   PRD ref: `prd.md > The Core Journey`, `Structured Plan`, `Look and Feel`
@@ -61,6 +61,11 @@ Reflection: Not yet offered; personal answer belongs only in the ignored learner
 Activity mode: Focused investigation for an experienced plan-first learner.
 
 ## Revisions
+
+- Slice 2 verification: 18 unit/render/API tests passed, including malformed/oversized input, configuration and timeout mapping; four browser tests passed, including refreshing a generated result and Retry with the original submission. Typecheck, lint and production build passed. Real fictional scenarios exposed overestimated urgency and weak accounting advice; the prompt now grounds urgency, distinguishes sales from cash/profit, and discourages unsupported targets. Retesting returned schema-valid Medium/Low/High plans for unknown impact, stable planning and an imminent rent deadline. Semantic quality remains imperfect: occasional assumptions or inconsistent cash checks survive structural validation. One 502 could not be reproduced directly; no speculative adapter fix was made.
+- Publishing access check: no Git remote or GitHub/Vercel CLI is configured. The Computer Use runtime failed to initialize with a missing kernel-assets path. Account sign-in and repository details are required to finish publishing; no deployed URL exists yet.
+
+- Slice 1 passed real-provider and browser verification, received the learner's successful hands-on check, and was committed as `1f0082a`. Earlier progress notes below describe the installation and API investigation at those times.
 
 - Real Gemini generation is now verified through the actual API (200 with a complete validated plan) and the browser (separate results and Day 7 visible, without response interception). The fictional Lagos food-business example produced concrete WhatsApp feedback/outreach actions; offers still require the owner's affordability judgment. A read-only independent review found no critical/important bugs. The early hands-on learner check remains pending, so slice 1 is not yet committed or checked complete.
 

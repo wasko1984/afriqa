@@ -9,6 +9,8 @@ test('submitting a problem navigates to the complete results page', async ({page
   await expect(page.getByRole('heading',{name:'Your next three actions'})).toBeVisible();
   await expect(page.getByText('Day 7',{exact:true})).toBeVisible();
   await expect(page.getByText('Medium priority',{exact:true})).toBeVisible();
+  await page.reload();
+  await expect(page.getByRole('link',{name:'Describe your problem'})).toBeVisible();
 });
 test('retry preserves the submitted problem after failure', async ({page}) => {
   let attempt=0;
