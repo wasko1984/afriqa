@@ -1,0 +1,6 @@
+{
+  "name": "afriqa", "version": "0.1.0", "private": true, "type": "module",
+  "scripts": {"dev":"next dev", "build":"next build", "start":"next start", "test":"vitest run", "typecheck":"tsc --noEmit", "lint":"eslint app components lib tests", "test:e2e":"playwright test"},
+  "dependencies": {"next":"latest", "react":"latest", "react-dom":"latest", "@google/genai":"latest", "zod":"^4.0.0", "server-only":"^0.0.1"},
+  "devDependencies": {"typescript":"^5.0.0", "@types/node":"^22.0.0", "@types/react":"^19.0.0", "@types/react-dom":"^19.0.0", "vitest":"latest", "@playwright/test":"latest", "eslint":"^9.0.0", "eslint-config-next":"latest"}
+}
