@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AFRIQA — App map</title>
+<style>
+:root{color-scheme:light}*{box-sizing:border-box}body{margin:0;background:#f7f5ef;color:#14243a;font:17px/1.6 system-ui,sans-serif}main{max-width:960px;margin:auto;padding:40px 24px}h1{font-size:clamp(32px,6vw,52px);line-height:1.1}h2{margin-top:32px}a{color:#087f78}a:focus-visible{outline:3px solid #087f78;outline-offset:4px}code{overflow-wrap:anywhere;font-size:.9em}section,.flow li{background:white;border:1px solid #dce5df;border-radius:16px;padding:20px}.flow{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.flow li strong{display:block;color:#087f78}.note{color:#526174}li{margin-bottom:10px}@media(max-width:650px){.flow{grid-template-columns:1fr}main{padding:24px 18px}}
+</style>
+</head>
+<body><main>
+<p class="note">Technical reference • source snapshot <code>53cc6a4</code></p>
+<h1>AFRIQA: from problem to next steps</h1>
+<p>One input, one AI request, one structured plan. AFRIQA interprets the problem's domain and produces possible causes, explained urgency, three actions and Days 1–7 with progress checks.</p>
+<ol class="flow" aria-label="Problem-to-plan data flow">
+<li><strong>1. Describe and submit →</strong><code>components/problem-form.tsx</code><br>The <code>generate</code> function validates input and sends it to <code>POST /api/plan</code>. Retry retains the original submitted problem.</li>
+<li><strong>2. Generate and validate →</strong><code>lib/plan-prompt.ts</code> shapes domain-specific instructions. <code>lib/gemini.ts</code> calls Gemini. <code>lib/plan-schema.ts</code> checks the JSON response before it can succeed.</li>
+<li><strong>3. Read the result</strong><code>components/plan-provider.tsx</code> holds the active plan in memory. <code>components/plan-view.tsx</code> displays its domain, actions and timeline at <code>/results</code>.</li>
+</ol>
+<section><h2>Reference route: structured AI output</h2>
+<p>This is a reference route, not a record of an interactive code tour.</p>
+<ol>
+<li><code>lib/plan-prompt.ts → buildPrompt</code>: identify the central domain, keep every section relevant, respect resources and prioritize immediate help when needed.</li>
+<li><code>lib/plan-schema.ts → planSchema / planJsonSchema</code>: the provider schema guides generation; runtime validation requires a recognized domain, exactly three actions and ordered Days 1–7.</li>
+<li><code>lib/gemini.ts → generatePlan</code>: extract and parse a completed AI response. <code>app/api/plan/route.ts → POST</code> returns only validated plans, otherwise a recoverable error.</li>
+</ol></section>
+<h2>To change this, start here</h2>
+<ul>
+<li>Advice and domain behavior: <code>lib/plan-prompt.ts</code>; repeat the real scenarios in <code>devpost/domain-verification.md</code>.</li>
+<li>Required output fields: <code>lib/plan-schema.ts</code>; update <code>tests/fixtures.ts</code> and consumers, then run schema and browser tests.</li>
+<li>Result wording and layout: <code>components/plan-view.tsx</code> and <code>app/globals.css</code>.</li>
+<li>Input or Retry: <code>components/problem-form.tsx</code>; verify <code>tests/workflow.spec.ts</code>.</li>
+</ul>
+<section><h2>A practice to reuse</h2>
+<p>Turn a requirement into an observable check. The domain requirement became a schema rejection/preservation test in <code>tests/plan-schema.test.ts</code> and a visible perspective check in <code>tests/workflow.spec.ts</code>. Real scenarios then revealed a distracting shop task in a health emergency, despite valid JSON. That led to a refined prompt and another real request.</p>
+<p>Use both structural tests and real content review on future AI projects. Valid JSON does not establish correct advice, diagnosis or classification. Keep an error visible rather than inventing a successful result.</p></section>
+<h2>Run it again</h2>
+<p>Use Node.js 22. Run <code>npm install</code>, configure <code>.env.local</code> from the secret-free <code>.env.example</code>, and run <code>npm run dev</code>. Open <code>http://localhost:3000</code>. AI generation requires internet and available Gemini quota.</p>
+<p>Checks: <code>npm test</code>, <code>npm run typecheck</code>, <code>npm run lint</code>, <code>npm run build</code>, and <code>npm run test:e2e</code> after browser setup in the README.</p>
+<p>There is no database or saved history. Refreshing results clears the in-memory plan. The API key stays on the server. This map works offline with scripts disabled; the app's AI feature requires internet. It is a source snapshot and can drift after changes.</p>
+<p><a href="https://github.com/wasko1984/afriqa">Public source</a> · <a href="https://afriqa-xi.vercel.app">Live app</a></p>
+</main></body></html>

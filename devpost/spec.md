@@ -31,6 +31,8 @@ Implements `prd.md > The Core Journey`.
 Exact package versions are not installed yet. Resolve supported stable versions during build, verify SDK compatibility, and commit the lockfile. Do not claim package installation or model access has been verified by this specification.
 
 ## Where It Runs and How Someone Tries It
+
+Delivery links: public source `https://github.com/wasko1984/afriqa`; live demo `https://afriqa-xi.vercel.app`. The learner reports the revised live workflow works. Demo-video URL and final Devpost submission link remain pending in `shipping.md`. The offline source guide is `app-map.html`.
 ### Local Development and Recording
 From the project root: `npm install`, create `.env.local` from the secret-free `.env.example`, set the key locally, then `npm run dev`. Open `http://localhost:3000`. Local execution still requires internet for AI generation.
 

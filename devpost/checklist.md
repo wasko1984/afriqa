@@ -42,27 +42,29 @@ Build mode: fast
 ## Hands-on Checkpoints
 
 - [x] Early usable behavior explored — learner tried the real workflow and reported "is working"; no changes requested.
-- [ ] Final kick-the-tires exploration and feedback completed — after deployment, or explicitly revised checkpoint if account access delays publishing.
+- [x] Final kick-the-tires exploration and feedback completed — learner reports the revised live site is working and asks to proceed to hackathon delivery.
 
 ## Final Review
 
-- [ ] Domain-specific revision requested after the learner reported the deployed app works perfectly: update prompt/schema/display and verify real cross-domain outputs, then have the learner retry the live app.
+- [x] Domain-specific revision requested after the learner reported the deployed app works perfectly: prompt/schema/display updated, cross-domain outputs checked, and learner reports the live site is working.
 
-- [ ] Final review complete — feedback resolved and learner confirms ready to ship
+- [x] Final review complete — learner confirms the site works and explicitly requests the final hackathon process.
 
 ## Code Tour and App Map
 
-- [ ] Learning activity complete — inspect actual structured generation and validation evidence, or connect prior slice-1 practice to the reusable takeaway.
-- [ ] Optional edit and transfer reflection addressed — offered/declined/already covered/not applicable as appropriate.
-- [ ] `devpost/app-map.html` generated from finished code, checked, and shown, including a project-grounded practice to reuse.
+- [x] Learning activity complete — evidence-based recap connects schema checks with real domain/emergency response review; no claim of an interactive tour or learner mastery.
+- [x] Optional edit and transfer reflection addressed — edit not applicable to the focused recap; optional reflection skipped to honor the request to proceed to shipping.
+- [x] `devpost/app-map.html` generated from finished code, checked offline with scripts disabled at phone width, paths/anchors checked, and shown as a take-home reference.
 
-Activity and evidence: Pending build; learning focus is schema-guided generation and how it differs from runtime validation.
-Route and stops: Planned `lib/plan-schema.ts`, `lib/plan-prompt.ts`, `lib/gemini.ts`; record actual symbols after implementation.
-Edit outcome: Not yet offered.
-Reflection: Not yet offered; personal answer belongs only in the ignored learner profile.
-Activity mode: Focused investigation for an experienced plan-first learner.
+Activity and evidence: Agent delivered a concise recap: schema rejection/preservation and browser checks establish structure/display; real domain examples exposed a distracting shop task within valid health JSON, prompting refinement and retesting. Latest unit/API/render run passed 21 tests. This is a recap of project evidence, not hands-on practice.
+Route and stops: Reference route in the map: `lib/plan-prompt.ts > buildPrompt`, `lib/plan-schema.ts > planSchema / planJsonSchema`, `lib/gemini.ts > generatePlan`, with `app/api/plan/route.ts > POST` as the response boundary. Anchors verified; route not toured interactively.
+Edit outcome: Not applicable to the focused recap; no incidental edit requested.
+Reflection: Optional reflection skipped; no learner reflection authored or inferred.
+Activity mode: Evidence-based recap and reference map for an experienced plan-first learner proceeding to delivery.
 
 ## Revisions
+
+- The learner reports the revised site is working and requests the final hackathon process. This completes learner verification/readiness; earlier agent connection failures remain honestly recorded, with no claimed root-cause fix. Final learning recap and the offline app map are complete. Proceed to `6-ship`; video, learner-authored submission and exit survey remain outstanding.
 
 - Domain revision committed/pushed as `a360bbc`; the live homepage returned 200 with the new wording. Deployed generation checks returned the recoverable 502 message, while two remote browser page loads timed out. A subsequent local provider probe also failed with APIConnectionError. Live end-to-end success of the revision is not established. Added credential-free server diagnostics (`kind`, numeric provider status and invalid schema field names only) to distinguish provider/connection failures from invalid output; no user input, response content or key is logged. Learner assistance with Vercel logs is requested.
 
