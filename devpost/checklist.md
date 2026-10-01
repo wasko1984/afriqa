@@ -29,7 +29,7 @@ Build mode: fast
   Learner check: Try blank input, generate a plan, revisit results after refresh, and report confusing behavior. Check the phone-width layout.
   Commit: `Verify retries validation and responsive workflow`
 
-- [ ] **3. Publish and verify the Vercel demo**
+- [x] **3. Publish and verify the Vercel demo**
   Becomes usable: Others can open the deployed app and generate a real plan; public source includes setup and verification instructions.
   Why now: Publish only after the local workflow and failure paths have passed checks, so deployment tests a known working app.
   PRD ref: `prd.md > Acceptance Criteria`, `What We're Building`
@@ -46,6 +46,8 @@ Build mode: fast
 
 ## Final Review
 
+- [ ] Domain-specific revision requested after the learner reported the deployed app works perfectly: update prompt/schema/display and verify real cross-domain outputs, then have the learner retry the live app.
+
 - [ ] Final review complete — feedback resolved and learner confirms ready to ship
 
 ## Code Tour and App Map
@@ -61,6 +63,12 @@ Reflection: Not yet offered; personal answer belongs only in the ignored learner
 Activity mode: Focused investigation for an experienced plan-first learner.
 
 ## Revisions
+
+- Final domain-aware production build, typecheck and lint passed, alongside the 21 automated tests. Five browser checks passed on the production app. Publishing the revision and checking its real deployed browser response are the remaining agent steps; learner retry follows.
+
+- Domain revision verification: 21 unit/render/API tests and five browser workflow tests passed. Real fictional examples produced all nine supported domain categories with relevant actions; a conflicting marketing instruction remained an Education plan. Timeout/connection interruptions were retained as failures and explicitly retested. The urgent shop-owner example was Health/High; after refining a distracting shop task, retesting produced only medical/safety actions, immediate help, and clinician-guided follow-up. See `domain-verification.md` for evidence and limitations. Final production build, publishing verification and learner retry are tracked separately until complete.
+
+- The learner reported the deployed app is working perfectly and requested domain-specific analysis for medical, security, education, business, household, love/relationships, jobs/careers and other problems. This explicitly expands the original business-focused boundary within the same two-page workflow. Scope, PRD and spec were updated; final readiness is pending this requested revision. The new required domain field was tested failing before implementation; semantic relevance is checked with real model responses rather than prompt-text assertions.
 
 - Vercel demo verified at `https://afriqa-xi.vercel.app`: homepage HTTP 200; real deployed generation returned all required sections, three actions and ordered Days 1–7. An unintercepted browser submission reached `/results`, showed the actions and Day 7, rejected blank input, and displayed return guidance after refresh. No credentials were transmitted in chat. Final learner exploration/readiness confirmation and learning wrap-up remain pending.
 

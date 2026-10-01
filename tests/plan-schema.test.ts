@@ -2,6 +2,12 @@ import { describe, expect, it } from 'vitest';
 import { planSchema } from '../lib/plan-schema';
 import { samplePlan } from './fixtures';
 describe('complete decision plans', () => {
+  it('rejects a plan that does not identify its domain', () => expect(planSchema.safeParse({...samplePlan(), domain:undefined}).success).toBe(false));
+  it('rejects an unsupported domain instead of silently dropping it', () => expect(planSchema.safeParse({...samplePlan(), domain:'Sales pitch'}).success).toBe(false));
+  it('preserves the identified domain for the result page', () => {
+    const result=planSchema.parse({...samplePlan(),domain:'Education'});
+    expect(result).toHaveProperty('domain','Education');
+  });
   it('accepts a complete structured plan', () => expect(planSchema.safeParse(samplePlan()).success).toBe(true));
   it('rejects a missing core problem', () => expect(planSchema.safeParse({...samplePlan(), coreProblem: undefined}).success).toBe(false));
   it('rejects blank required content', () => expect(planSchema.safeParse({...samplePlan(), coreProblem: '   '}).success).toBe(false));

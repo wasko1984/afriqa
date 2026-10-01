@@ -1,12 +1,14 @@
 # AFRIQA
 
-Turn a small-business problem into three practical actions and a seven-day plan.
+Turn an everyday problem into three practical actions and a seven-day plan grounded in its domain.
 
 Live demo: https://afriqa-xi.vercel.app
 
 Public source: https://github.com/wasko1984/afriqa
 
 This learning proof of concept uses Next.js, TypeScript, Gemini structured generation, and runtime validation. All five result sections are required. It is an online app; there is no offline model, account system, or saved-plan history.
+
+AFRIQA identifies the main domain—Health, Security, Education, Business, Household, Relationships, Careers, Mixed or Other—and displays that perspective on the plan. Occupation does not override the concern: a shop owner describing urgent symptoms needs health guidance. Health output is general information and care-seeking guidance, not diagnosis or treatment. Immediate danger requires help now; the seven-day schedule is conditional follow-up.
 
 ## Local setup
 
@@ -24,6 +26,8 @@ Try this fictional real-AI example:
 
 Inspect the core problem, possible causes, explained urgency, exactly three actions, all seven days, realistic resource use, and a measurable success check. Compare with a sparse problem such as “My business is losing customers.” Causes should remain possible explanations, and missing context must not become invented facts.
 
+For domain checks, try a mathematics study problem, securing your own compromised email account, sharing household chores, a respectful relationship disagreement, or improving job applications. Confirm the perspective and every plan section match the actual concern, with no unrelated business template. Review mixed problems and ambiguous wording explicitly. See `devpost/domain-verification.md` for the real-model scenarios and limitations.
+
 ## Deployment
 
 Import the GitHub repository into Vercel as a Next.js project. Set `GEMINI_API_KEY` and `GEMINI_MODEL` as server-only environment variables. Redeploy after changing settings, then verify a real generated plan on the deployed URL. Do not prefix the key with `NEXT_PUBLIC_`.
@@ -34,6 +38,6 @@ The hackathon also requires a short demo video and public source repository. Dep
 
 ## Current status
 
-The local workflow is implemented and learner-tested. Eighteen unit/render/API tests, four browser workflow tests using test-only responses, typecheck, lint, and the production build passed. Desktop and phone layouts were inspected. The public Vercel demo was verified with real Gemini generation through its API and browser, including navigation to results, three actions, Day 7, blank-input rejection, and refresh guidance. Final learner review remains pending. See `devpost/checklist.md` for the actual build state.
+The original workflow was learner-tested on the public Vercel demo. The domain-aware revision passes 21 unit/render/API tests, five browser workflow tests using test-only responses, typecheck, lint and the production build. Real-model checks covered all nine domain categories, mixed concerns, a conflicting marketing instruction and urgent medical symptoms. Final deployed revision verification and learner retry are recorded in `devpost/checklist.md`.
 
 Real quality checks used fictional daily-sales, stable-stock-planning, and imminent-rent scenarios. The refined prompt produced Medium, Low, and High urgency respectively. Schema validation verifies structure, not the accuracy of advice: the model can still assume unavailable inventory or customer debts, or give an inconsistent accounting check. Review each plan against the stated situation. One real request failed with the recoverable generation message; repeating it directly succeeded, so its exact cause was not established.

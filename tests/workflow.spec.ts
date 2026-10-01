@@ -9,8 +9,19 @@ test('submitting a problem navigates to the complete results page', async ({page
   await expect(page.getByRole('heading',{name:'Your next three actions'})).toBeVisible();
   await expect(page.getByText('Day 7',{exact:true})).toBeVisible();
   await expect(page.getByText('Medium priority',{exact:true})).toBeVisible();
+  await expect(page.getByText('Business perspective',{exact:true})).toBeVisible();
   await page.reload();
   await expect(page.getByRole('link',{name:'Describe your problem'})).toBeVisible();
+});
+
+test('a non-business plan displays its own domain perspective', async ({page}) => {
+  const plan={...samplePlan(),domain:'Education',coreProblem:'You need a focused mathematics revision routine.'};
+  await page.route('**/api/plan',route=>route.fulfill({json:{plan}}));
+  await page.goto('/');
+  await page.getByLabel('What problem are you facing?').fill('I struggle with mathematics and have an exam next week.');
+  await page.getByRole('button',{name:'Submit',exact:true}).click();
+  await expect(page.getByText('Education perspective',{exact:true})).toBeVisible();
+  await expect(page.getByRole('heading',{name:'You need a focused mathematics revision routine.'})).toBeVisible();
 });
 test('retry preserves the submitted problem after failure', async ({page}) => {
   let attempt=0;

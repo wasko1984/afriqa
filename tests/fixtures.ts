@@ -1,6 +1,7 @@
 // Fictional test data, never used as live AI output.
 export function samplePlan() {
   return {
+    domain: 'Business',
     coreProblem: 'Your food business has fewer returning customers.',
     possibleCauses: ['Customers may be dissatisfied with consistency.'],
     priority: { level: 'Medium', explanation: 'Investigate this week before losses grow.' },

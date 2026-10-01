@@ -75,6 +75,7 @@ Implements `prd.md > Structured Plan`, `Acceptance Criteria`.
 
 ## Data Model
 All properties are required in the base object; arrays for assumptions/resources may be empty when not applicable.
+- `domain`: Health, Security, Education, Business, Household, Relationships, Careers, Mixed or Other; displayed as the plan's perspective. It identifies the model's interpretation, not professional expertise or independently verified classification.
 - `coreProblem`: nonblank string.
 - `possibleCauses`: 1–5 nonblank strings, worded as possibilities.
 - `priority`: `{ level: 'Low' | 'Medium' | 'High', explanation: nonblank string }`.
@@ -161,6 +162,7 @@ Implements `prd.md > Acceptance Criteria`.
 One Next.js project, one AI service, memory-only workflow data, no database/accounts, no streaming, and no autonomous tools keep the two-page proof of concept small. Offline generation and adaptive follow-up remain deferred per the approved scope. Generated resources are short text within the plan.
 
 ## Decisions and Open Issues
+- Post-deployment domain revision: the learner explicitly requested plans for health, security, education, business, household, relationships, careers and other concerns. The required `domain` enum is generated in the same Gemini call and checked by the existing Zod boundary; no keyword classifier, extra model call or domain-selection screen is added. `PlanView` displays the perspective. Domain instructions shape all sections; schema validation establishes structure, not semantic correctness. Real cross-domain evaluations and emergency/occupation-conflict examples verify relevance. No paid service or additional workflow is introduced.
 - Build discovery: gemini-3.8-flash returned temporary high demand. The configured/default model is now gemini-3.1-flash-lite, verified on a real structured request and documented with free-tier access. Restricted outbound network access required an unrestricted test. This preserves the chosen free Gemini provider and product behavior.
 - Learner accepted Next.js, TypeScript, CSS, and a server-side AI workflow. Gemini free tier supersedes the initial OpenAI recommendation because the learner has no budget; no paid upgrades are authorized.
 - Learner's learning focus is generating structured output. During build, inspect the plan schema and one real response, then compare it with an invalid test response. Explain how schema-guided generation and runtime validation serve different roles; document the evidence without claiming mastery.

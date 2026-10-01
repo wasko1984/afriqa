@@ -1,6 +1,7 @@
 import { z } from 'zod';
 const text = z.string().trim().min(1).max(4000);
 const basePlanSchema = z.object({
+  domain:z.enum(['Health','Security','Education','Business','Household','Relationships','Careers','Mixed','Other']),
   coreProblem: text,
   possibleCauses: z.array(text).min(1).max(5),
   priority: z.object({level:z.enum(['Low','Medium','High']),explanation:text}),

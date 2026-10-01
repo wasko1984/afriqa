@@ -5,12 +5,12 @@ status: approved
 
 # AFRIQA — Product Requirements
 
-An AI Decision Assistant for African small-business owners that turns a plain-language problem into realistic next actions and a seven-day plan.
+An AI Decision Assistant for everyday problems that turns a plain-language problem into domain-relevant next actions and a seven-day plan.
 Source: `scope.md > Who It's For`, `The Unique Kernel`.
 
 ## The Core Journey
 1. The owner opens a welcome page with a short introduction, a labeled problem-entry box, and a Submit button.
-2. They describe their main problem and may include business type, location, available resources, and constraints in the same text.
+2. They describe their main problem and may include its topic, location, available resources, and constraints in the same text.
 3. Submit starts analysis immediately, without a follow-up interview. A visible loading state confirms the request is in progress.
 4. Successful generation opens a separate results page containing the structured decision/action plan.
 5. If generation fails, a clear error offers Retry using the same problem, without requiring the owner to retype it.
@@ -33,12 +33,16 @@ Source: `scope.md > Inspiration & Identity`.
 ### Problem Submission
 - Accept a natural-language problem in one text box.
 - Analyze immediately on Submit; the learner's latest direction supersedes the earlier request for follow-up questions.
-- Use supplied context and constraints. Do not invent missing business facts.
+- Use supplied context and constraints. Do not invent missing facts.
 - Proposed validation: empty or whitespace-only input stays on the entry page with a clear prompt to enter a problem.
 - Proposed loading behavior: show analysis in progress and prevent duplicate submissions until the current request finishes.
 Source: `scope.md > The Core Loop`, `The POC Boundary`.
 
 ### Structured Plan
+Post-deployment revision requested by the learner: identify and display the central domain as Health, Security, Education, Business, Household, Relationships, Careers, Mixed or Other. Analyze the actual concern rather than the user's occupation or isolated keywords. All plan sections must stay relevant to that concern. Use Mixed for materially overlapping domains and explain the relevant perspectives; unclear context requires a provisional interpretation. No new screen or follow-up workflow is added.
+
+Health plans provide general information and suitable assessment steps, not diagnoses or prescriptions. Urgent symptoms or immediate physical danger require help now in the first action and Day 1; subsequent days are conditional follow-up, not a reason to delay urgent help. Security plans distinguish physical safety from defensive cybersecurity. Relationship plans respect consent and boundaries; abuse prioritizes safety. Education and career plans use learning or application evidence, not sales metrics. Household hazards require safe escalation rather than dangerous DIY.
+
 Every successful result contains all five required sections below, with no blank or skipped sections:
 - **Core problem:** a concise interpretation grounded in the input.
 - **Possible causes:** plausible explanations labeled as possibilities, not verified facts.
@@ -66,7 +70,7 @@ Source: `scope.md > What "Working" Looks Like`.
 
 ## Acceptance Criteria
 1. The welcome page visibly contains an introduction, labeled problem box, and Submit.
-2. A nonempty business problem begins generation immediately, with no clarifying-question step.
+2. A nonempty problem begins generation immediately, with no clarifying-question step.
 3. Successful generation navigates to a separate results page displaying the core problem, possible causes, explained priority, exactly three ordered actions, and all seven days.
 4. A real-AI demo using a food business losing customers produces concrete tasks rather than only general advice. Examples of acceptable specificity include contacting a stated number of past customers, testing an offer based on feedback, and tracking orders. Exact wording and recommendations need not match these examples.
 5. When the input supplies a resource constraint, the plan respects it. Missing context is not asserted as fact, and causes remain explicitly possible.
@@ -75,6 +79,7 @@ Source: `scope.md > What "Working" Looks Like`.
 8. A generation failure visibly offers Retry and preserves the input. A successful retry completes the same workflow.
 9. Proposed empty-input, loading, and missing-result behaviors work as described under States and Boundaries.
 10. The deployed Vercel demo completes the real AI workflow; the same flow can be shown in the short demo video, with source delivered in a public GitHub repository.
+11. Health, security, education, household, relationship and career examples produce the appropriate domain label and relevant actions, without unrelated business advice. Mixed and ambiguous cases are interpreted explicitly. A business owner's urgent symptoms are treated as Health, and immediate help is not deferred into the seven-day schedule.
 
 ## Product Decisions
 - Welcome note, problem entry, and Submit form the first screen.
@@ -92,12 +97,12 @@ Two user-facing surfaces and one complete generation workflow, with contextual s
 - Adaptive follow-up based on reported outcomes: adds a second workflow.
 - Offline/local-model operation: replaced by the online Vercel demo.
 - Saved-plan history and accounts: proposed exclusions because they are unnecessary to demonstrate the core loop.
-- Separate workflows for students and individuals: demonstrate the small-business case first.
+- Separate domain-specific workflows: all supported domains use the same problem-to-plan journey.
 
 ## Non-Goals
 - General-purpose chatbot conversation.
 - A separate resource library.
-- Verified diagnosis of a business from limited text or guaranteed business outcomes; recommendations remain suggestions grounded in supplied context.
+- Verified diagnosis, professional treatment or guaranteed outcomes; recommendations remain suggestions grounded in supplied context.
 Source: `scope.md > Explicitly Cut`, `Later`.
 
 ## Open Questions and Adopted Defaults
